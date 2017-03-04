@@ -31,8 +31,8 @@ object Form1: TForm1
   object Label3: TLabel
     Left = 40
     Top = 288
-    Width = 105
-    Height = 41
+    Width = 32
+    Height = 13
     Caption = 'Label3'
   end
   object Button1: TButton
@@ -63,15 +63,6 @@ object Form1: TForm1
     TabOrder = 2
     OnClick = Button2Click
   end
-  object Button3: TButton
-    Left = 80
-    Top = 72
-    Width = 89
-    Height = 41
-    Caption = 'eject'
-    TabOrder = 3
-    OnClick = Button3Click
-  end
   object Memo2: TMemo
     Left = 544
     Top = 56
@@ -83,16 +74,7 @@ object Form1: TForm1
       'test'
       'mouse_eject'
       'mouse_inject')
-    TabOrder = 4
-  end
-  object Button4: TButton
-    Left = 80
-    Top = 136
-    Width = 89
-    Height = 41
-    Caption = '!inject'
-    TabOrder = 5
-    OnClick = Button4Click
+    TabOrder = 3
   end
   object Button5: TButton
     Left = 80
@@ -100,7 +82,7 @@ object Form1: TForm1
     Width = 97
     Height = 41
     Caption = 'readPcName'
-    TabOrder = 6
+    TabOrder = 4
     OnClick = Button5Click
   end
   object Button6: TButton
@@ -109,7 +91,7 @@ object Form1: TForm1
     Width = 145
     Height = 33
     Caption = 'get ip'
-    TabOrder = 7
+    TabOrder = 5
     OnClick = Button6Click
   end
   object IdTCPClient1: TIdTCPClient
