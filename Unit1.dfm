@@ -64,16 +64,24 @@ object Form1: TForm1
     OnClick = Button2Click
   end
   object Memo2: TMemo
-    Left = 544
-    Top = 56
+    Left = 616
+    Top = 96
     Width = 169
     Height = 193
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
     Lines.Strings = (
-      'Avail:'
+      #1044#1086#1089#1090#1091#1087#1085#1099' '
+      #1089#1083#1077#1076#1091#1102#1097#1080#1077' '
+      #1082#1086#1084#1072#1085#1076#1099':'
       ''
       'test'
-      'mouse_eject'
-      'mouse_inject')
+      'get_ip'
+      'read_pc_name')
+    ParentFont = False
     TabOrder = 3
   end
   object Button5: TButton
@@ -93,6 +101,35 @@ object Form1: TForm1
     Caption = 'get ip'
     TabOrder = 5
     OnClick = Button6Click
+  end
+  object Edit1: TEdit
+    Left = 584
+    Top = 16
+    Width = 177
+    Height = 57
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -21
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 6
+  end
+  object Button3: TButton
+    Left = 776
+    Top = 16
+    Width = 121
+    Height = 57
+    Caption = #1042#1099#1087#1086#1083#1085#1080#1090#1100' '#1082#1086#1084#1072#1085#1076#1091
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 7
+    WordWrap = True
+    OnClick = Button3Click
   end
   object IdTCPClient1: TIdTCPClient
     MaxLineAction = maException

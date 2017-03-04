@@ -14,9 +14,7 @@ type
     Memo1: TMemo;
     Button2: TButton;
     Timer1: TTimer;
-    Button3: TButton;
     Memo2: TMemo;
-    Button4: TButton;
     Label1: TLabel;
     Button5: TButton;
     Button6: TButton;
@@ -54,8 +52,6 @@ procedure switchControls(state:boolean);
 begin
   Form1.Button1.Enabled:=state;
   Form1.Button5.Enabled:=state;
-  // Form1.Button3.Enabled:=state;
-  // Form1.Button4.Enabled:=state;
   Form1.Button6.Enabled:=state;
 end;
 procedure disableControls();begin switchControls(false);end;

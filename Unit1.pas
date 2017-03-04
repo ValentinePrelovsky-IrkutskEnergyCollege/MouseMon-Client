@@ -21,6 +21,8 @@ type
     Label2: TLabel;
     Label3: TLabel;
     Timer2: TTimer;
+    Edit1: TEdit;
+    Button3: TButton;
     procedure IdTCPClient1Connected(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -50,7 +52,6 @@ implementation
 
 procedure switchControls(state:boolean);
 begin
-  Form1.Button1.Enabled:=state;
   Form1.Button5.Enabled:=state;
   Form1.Button6.Enabled:=state;
 end;
@@ -119,17 +120,33 @@ begin
 end;
 
 procedure TForm1.Button3Click(Sender: TObject);
+var e:string;
 begin
-  IdTCPClient1.SendCmd('mouse_eject');
-   Memo1.Lines.Add('mouse_eject' + getConnectionInfo());
-end;
+  e:= Edit1.Text;
+  if (e <> '') then
+  begin
+    // you cannot eject or inject your mouse
+    if (e = 'read_pc_name')then
+    begin
+      IdTCPClient1.WriteLn('read_pc_name');
+      log('read pc = client:' + IdTCPClient1.ReadLn);
+    end; // read pc name
+
+    if (e = 'get_ip') then
+    begin
+      IdTCPClient1.WriteLn('get_ip');
+      log(IdTCPClient1.ReadLn);
+    end; // get_ip
+
+  end;// if (e <> '') then
+end; // procedure
 
 procedure TForm1.Button5Click(Sender: TObject);
 var s:string;
 begin
   IdTCPClient1.WriteLn('read_pc_name');
   s:= IdTCPClient1.ReadLn; // try to read
-  Memo1.Lines.Add('read pc = client:' + s);
+  log('read pc = client:' + s);
 end;
 
 procedure TForm1.Button6Click(Sender: TObject);
