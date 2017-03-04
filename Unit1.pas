@@ -9,7 +9,6 @@ uses
 
 type
   TForm1 = class(TForm)
-    Button1: TButton;
     IdTCPClient1: TIdTCPClient;
     Memo1: TMemo;
     Button2: TButton;
@@ -24,7 +23,6 @@ type
     Edit1: TEdit;
     Button3: TButton;
     procedure IdTCPClient1Connected(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
     procedure Button3Click(Sender: TObject);
@@ -70,13 +68,6 @@ begin
   Form1.Caption := 'has coonected';
 end;
 
-procedure TForm1.Button1Click(Sender: TObject);
-begin
-  IdTCPClient1.Connect();
-
-  IdTCPClient1.SendCmd('test');
-end;
-
 procedure TForm1.Button2Click(Sender: TObject);
 begin
   Form1.Memo1.Lines.Clear;
@@ -86,7 +77,7 @@ procedure TForm1.Timer1Timer(Sender: TObject);
 var b:boolean;
 begin
     // Label3.Caption:=IntToStr(usb_counter);
-    
+
     Label2.Caption:=(IdTCPClient1.LocalName);
     Label1.Caption :=  'client local name: ' + IdTCPClient1.LocalName;
     b := idTCPClient1.Connected;
