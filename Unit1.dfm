@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 192
-  Top = 124
+  Left = 370
+  Top = 217
   Width = 928
   Height = 480
   Caption = 'Form1'
@@ -19,6 +19,13 @@ object Form1: TForm1
     Width = 32
     Height = 13
     Caption = 'Label1'
+  end
+  object Label2: TLabel
+    Left = 408
+    Top = 40
+    Width = 73
+    Height = 33
+    Caption = 'Label2'
   end
   object Button1: TButton
     Left = 80
@@ -77,6 +84,7 @@ object Form1: TForm1
     Height = 41
     Caption = '!inject'
     TabOrder = 5
+    OnClick = Button4Click
   end
   object Button5: TButton
     Left = 80
@@ -99,6 +107,7 @@ object Form1: TForm1
   object IdTCPClient1: TIdTCPClient
     MaxLineAction = maException
     ReadTimeout = 100
+    OnDisconnected = IdTCPClient1Disconnected
     Host = '127.0.0.1'
     OnConnected = IdTCPClient1Connected
     Port = 6000
@@ -106,6 +115,7 @@ object Form1: TForm1
     Top = 24
   end
   object Timer1: TTimer
+    Interval = 300
     OnTimer = Timer1Timer
     Left = 40
     Top = 128

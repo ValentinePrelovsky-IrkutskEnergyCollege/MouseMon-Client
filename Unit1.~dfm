@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 192
-  Top = 124
+  Left = 370
+  Top = 217
   Width = 928
   Height = 480
   Caption = 'Form1'
@@ -26,6 +26,7 @@ object Form1: TForm1
     Width = 81
     Height = 25
     Caption = 'connect & test'
+    Enabled = False
     TabOrder = 0
     OnClick = Button1Click
   end
@@ -78,7 +79,7 @@ object Form1: TForm1
     TabOrder = 5
   end
   object Button5: TButton
-    Left = 88
+    Left = 80
     Top = 200
     Width = 97
     Height = 41
@@ -98,6 +99,7 @@ object Form1: TForm1
   object IdTCPClient1: TIdTCPClient
     MaxLineAction = maException
     ReadTimeout = 100
+    OnDisconnected = IdTCPClient1Disconnected
     Host = '127.0.0.1'
     OnConnected = IdTCPClient1Connected
     Port = 6000
@@ -105,6 +107,7 @@ object Form1: TForm1
     Top = 24
   end
   object Timer1: TTimer
+    Interval = 300
     OnTimer = Timer1Timer
     Left = 40
     Top = 128
