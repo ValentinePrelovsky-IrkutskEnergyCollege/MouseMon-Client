@@ -20,6 +20,13 @@ object Form1: TForm1
     Height = 13
     Caption = 'Label1'
   end
+  object Label2: TLabel
+    Left = 408
+    Top = 40
+    Width = 32
+    Height = 13
+    Caption = 'Label2'
+  end
   object Button1: TButton
     Left = 80
     Top = 32
@@ -77,6 +84,7 @@ object Form1: TForm1
     Height = 41
     Caption = '!inject'
     TabOrder = 5
+    OnClick = Button4Click
   end
   object Button5: TButton
     Left = 80

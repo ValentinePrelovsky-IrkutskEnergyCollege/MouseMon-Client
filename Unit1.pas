@@ -53,7 +53,11 @@ begin
 end;
 procedure disableControls();begin switchControls(false);end;
 procedure enableControls();begin switchControls(true);end;
-
+function getConnectionInfo():string;
+begin
+  Result := ' ' + Form1.IdTCPClient1.Socket.Binding.IP
+  + ' - ' + IntToStr(Form1.IdTCPCLient1.Port);
+end;
 procedure TForm1.IdTCPClient1Connected(Sender: TObject);
 begin
   Form1.Caption := 'has coonected';
@@ -109,7 +113,10 @@ end;
 procedure TForm1.Button3Click(Sender: TObject);
 begin
   IdTCPClient1.SendCmd('mouse_eject');
-end;
+   Memo1.Lines.Add('mouse_eject' + getConnectionInfo());
+
+   end;
+
 
 procedure TForm1.Button5Click(Sender: TObject);
 var s:string;
@@ -132,8 +139,8 @@ end;
 
 procedure TForm1.Button4Click(Sender: TObject);
 begin
-  IdTCPClient1.WriteLn('mouse_inject');
-  Memo1.Lines.Add(IdTCPClient1.ReadLn);
+  IdTCPClient1.SendCmd('mouse_inject');
+  Memo1.Lines.Add('mouse_inject');
 end;
 
 end.
