@@ -11,6 +11,7 @@ object Form1: TForm1
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -21,11 +22,18 @@ object Form1: TForm1
     Caption = 'Label1'
   end
   object Label2: TLabel
-    Left = 408
+    Left = 400
     Top = 40
-    Width = 73
-    Height = 33
+    Width = 32
+    Height = 13
     Caption = 'Label2'
+  end
+  object Label3: TLabel
+    Left = 40
+    Top = 288
+    Width = 32
+    Height = 13
+    Caption = 'Label3'
   end
   object Button1: TButton
     Left = 80
@@ -55,36 +63,26 @@ object Form1: TForm1
     TabOrder = 2
     OnClick = Button2Click
   end
-  object Button3: TButton
-    Left = 80
-    Top = 72
-    Width = 89
-    Height = 41
-    Caption = 'eject'
-    TabOrder = 3
-    OnClick = Button3Click
-  end
   object Memo2: TMemo
-    Left = 544
-    Top = 56
+    Left = 616
+    Top = 96
     Width = 169
     Height = 193
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
     Lines.Strings = (
-      'Avail:'
+      #1044#1086#1089#1090#1091#1087#1085#1099' '
+      #1089#1083#1077#1076#1091#1102#1097#1080#1077' '
+      #1082#1086#1084#1072#1085#1076#1099':'
       ''
       'test'
-      'mouse_eject'
-      'mouse_inject')
-    TabOrder = 4
-  end
-  object Button4: TButton
-    Left = 80
-    Top = 136
-    Width = 89
-    Height = 41
-    Caption = '!inject'
-    TabOrder = 5
-    OnClick = Button4Click
+      'get_ip'
+      'read_pc_name')
+    ParentFont = False
+    TabOrder = 3
   end
   object Button5: TButton
     Left = 80
@@ -92,7 +90,7 @@ object Form1: TForm1
     Width = 97
     Height = 41
     Caption = 'readPcName'
-    TabOrder = 6
+    TabOrder = 4
     OnClick = Button5Click
   end
   object Button6: TButton
@@ -101,8 +99,37 @@ object Form1: TForm1
     Width = 145
     Height = 33
     Caption = 'get ip'
-    TabOrder = 7
+    TabOrder = 5
     OnClick = Button6Click
+  end
+  object Edit1: TEdit
+    Left = 584
+    Top = 16
+    Width = 177
+    Height = 57
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -21
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 6
+  end
+  object Button3: TButton
+    Left = 776
+    Top = 16
+    Width = 121
+    Height = 57
+    Caption = #1042#1099#1087#1086#1083#1085#1080#1090#1100' '#1082#1086#1084#1072#1085#1076#1091
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 7
+    WordWrap = True
+    OnClick = Button3Click
   end
   object IdTCPClient1: TIdTCPClient
     MaxLineAction = maException
@@ -119,5 +146,11 @@ object Form1: TForm1
     OnTimer = Timer1Timer
     Left = 40
     Top = 128
+  end
+  object Timer2: TTimer
+    Interval = 500
+    OnTimer = Timer2Timer
+    Left = 200
+    Top = 312
   end
 end
