@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 370
-  Top = 217
+  Left = 273
+  Top = 174
   Width = 928
   Height = 480
   Caption = 'Form1'
@@ -12,6 +12,7 @@ object Form1: TForm1
   Font.Style = []
   OldCreateOrder = False
   OnCreate = FormCreate
+  OnPaint = FormPaint
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel

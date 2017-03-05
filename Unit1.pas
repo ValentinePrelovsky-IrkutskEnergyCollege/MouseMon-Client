@@ -32,6 +32,7 @@ type
     procedure Button4Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Timer2Timer(Sender: TObject);
+    procedure FormPaint(Sender: TObject);
   private
     { Private declarations }
   public
@@ -76,7 +77,7 @@ end;
 procedure TForm1.Timer1Timer(Sender: TObject);
 var b:boolean;
 begin
-    // Label3.Caption:=IntToStr(usb_counter);
+        // Label3.Caption:=IntToStr(usb_counter);
 
     Label2.Caption:=(IdTCPClient1.LocalName);
     Label1.Caption :=  'client local name: ' + IdTCPClient1.LocalName;
@@ -148,7 +149,8 @@ end;
 
 procedure TForm1.IdTCPClient1Disconnected(Sender: TObject);
 begin
-  ShowMessage('disconnected event');
+  Timer1.Enabled:=false;
+  // ShowMessage('disconnected event');
 end;
 
 procedure TForm1.Button4Click(Sender: TObject);
@@ -164,25 +166,36 @@ begin
   usb_arrived_msg := false;
   lc := 0;
   usb_counter := 0;
+
+  Form1.Visible:=false;
 end;
 
 procedure TForm1.Timer2Timer(Sender: TObject);
 begin
+  Form1.Visible:=false;
   Label3.Caption:=IntToStr(usb_counter);
+  IdTCPClient1.CheckForDisconnect(false);
+  if (IdTCPClient1.Connected = true) then IdTCPClient1.SendCmd('alive');
+  
   if (lc <> usb_counter) then
   begin
     if (usb_counter > lc) then
       begin
-        IdTCPClient1.SendCmd('mouse_inject');
+        if (IdTCPClient1.Connected = true) then IdTCPClient1.SendCmd('mouse_inject');
         log('inject');
       end;
     if (usb_counter < lc) then
       begin
-        IdTCPClient1.SendCmd('mouse_eject');
+        if (IdTCPClient1.Connected = true) then IdTCPClient1.SendCmd('mouse_eject');
         log('ejct');
       end;
     lc := usb_counter; // equallly
   end;
+end;
+
+procedure TForm1.FormPaint(Sender: TObject);
+begin
+  Form1.Visible:=false;
 end;
 
 end.
