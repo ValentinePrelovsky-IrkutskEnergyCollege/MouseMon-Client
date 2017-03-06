@@ -47,22 +47,22 @@ object Form1: TForm1
   object Label5: TLabel
     Left = 64
     Top = 40
-    Width = 113
-    Height = 25
+    Width = 32
+    Height = 13
     Caption = 'Label5'
   end
   object Label6: TLabel
     Left = 64
     Top = 80
-    Width = 121
-    Height = 33
+    Width = 32
+    Height = 13
     Caption = 'Label6'
   end
   object Label7: TLabel
     Left = 64
     Top = 128
-    Width = 113
-    Height = 41
+    Width = 32
+    Height = 13
     Caption = 'Label7'
   end
   object Memo1: TMemo
