@@ -9,7 +9,7 @@ uses
 
 begin
   Application.Initialize;
-  Application.Title := 'client';
+  Application.Title := 'Client';
   Application.CreateForm(TForm1, Form1);
   Application.Run;
 end.
