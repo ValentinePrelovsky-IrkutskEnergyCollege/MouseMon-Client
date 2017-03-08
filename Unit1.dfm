@@ -70,8 +70,6 @@ object Form1: TForm1
     Top = 40
     Width = 145
     Height = 161
-    Lines.Strings = (
-      'Memo1')
     TabOrder = 0
   end
   object Button2: TButton
@@ -147,7 +145,6 @@ object Form1: TForm1
     Width = 75
     Height = 25
     Caption = 'Button1'
-    Enabled = False
     TabOrder = 6
     OnClick = Button1Click
   end
