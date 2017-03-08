@@ -62,8 +62,7 @@ implementation
 
 function getConnectionInfo():string;
 begin
-  Result := ' '+Form1.IdTCPClient1.LocalName 
-  + ' - ' + IntToStr(Form1.IdTCPCLient1.Port);
+  Result := ' '+Form1.IdTCPClient1.LocalName;
 end;
 procedure log(strin:string);
 begin
@@ -185,11 +184,10 @@ begin
       begin
         if (IdTCPClient1.Connected = true) then
         begin
-          //IdTCPClient1.SendCmd('mouse_inject');
           IdTCPClient1.WriteLn('mouse_inject');           // послать команду
-  
+          log('Мышь присоединена' + IdTCPClient1.ReadLn());
         end;
-        log('Мышь присоединена' + IdTCPClient1.ReadLn());
+
       end;
 
     if (usb_counter < lc) then
@@ -203,7 +201,7 @@ end;  // end of timer
 
 procedure TForm1.FormPaint(Sender: TObject);
 begin
- // Form1.Visible:=false;
+  Form1.Visible:=false;
 end;
 
 procedure TForm1.Button1Click(Sender: TObject);
