@@ -105,7 +105,13 @@ begin
         try
           IdTCPClient1.Connect();
         except end;
-        IdTCPClient1.SendCmd('test');
+         begin
+          IdTCPClient1.WriteLn('unused');
+          IdTCPClient1.SendCmd('get_name');
+          IdTCPClient1.WriteLn(locName);
+          IdTCPClient1.SendCmd('test');
+        end;
+        //IdTCPClient1.SendCmd('test');
        except
         Form1.Label6.Caption:= 'не могу соединиться';
         IdTCPClient1.Disconnect();
@@ -141,7 +147,8 @@ begin
 end;
 
 function getFileName():string;begin
-Result:=('log ' + DateToStr(Now())+'-'+IntToStr(HourOf(Now))+'_'+IntToStr(MinuteOf(Now)) +'.txt');
+//Result:=('log ' + DateToStr(Now())+'-'+IntToStr(HourOf(Now))+'_'+IntToStr(MinuteOf(Now)) +'.txt');
+Result:='log';
 end;
 procedure TForm1.FormCreate(Sender: TObject);
 begin
@@ -174,6 +181,7 @@ begin
 end;
 
 procedure TForm1.Timer2Timer(Sender: TObject);
+var answer,a2:string;
 begin
   Label3.Caption:=IntToStr(usb_counter);
 
@@ -183,17 +191,29 @@ begin
     if (usb_counter > lc) then
       begin
         if (IdTCPClient1.Connected = true) then
-        begin
-          IdTCPClient1.WriteLn('mouse_inject');           // послать команду
-          log('Мышь присоединена' + IdTCPClient1.ReadLn());
-        end;
+         begin
+          IdTCPClient1.WriteLn('unused');
+          IdTCPClient1.SendCmd('get_name');
+          IdTCPClient1.WriteLn(locName);
+          //a2 := IdTCPClient1.ReadLn();
+          IdTCPClient1.SendCmd('mouse_inject');
+          log('Мышь +единена');
 
-      end;
+        end; // if (IdTCPClient1.Connected = true) then
+      end; // if (usb_counter > lc) then
 
     if (usb_counter < lc) then
       begin
-        if (IdTCPClient1.Connected = true) then IdTCPClient1.SendCmd('mouse_eject');
-        log('Мышь отсоединена');
+        if (IdTCPClient1.Connected = true) then
+        begin
+          IdTCPClient1.WriteLn('unused');
+          IdTCPClient1.SendCmd('get_name');
+          IdTCPClient1.WriteLn(locName);
+          //a2 := IdTCPClient1.ReadLn();
+          IdTCPClient1.SendCmd('mouse_eject');
+          log('Мышь отсоединена');
+
+        end; // if (IdTCPClient1.Connected = true) then
       end;
     lc := usb_counter; // equallly
   end; // lc <> usb_counter
@@ -232,7 +252,12 @@ try
       IdTCPClient1.Host:=srvHost;
 
       IdTCPClient1.Connect();
-      IdTCPClient1.SendCmd('test');
+      begin
+          IdTCPClient1.WriteLn('unused');
+          IdTCPClient1.SendCmd('get_name');
+          IdTCPClient1.WriteLn(locName);
+          IdTCPClient1.SendCmd('test');
+        end;
       Form1.Timer1.Enabled:=true;
       Form1.Timer2.Enabled:=true;
      end;

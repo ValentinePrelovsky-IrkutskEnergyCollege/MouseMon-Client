@@ -45,8 +45,8 @@ object Form1: TForm1
     Caption = 'host'
   end
   object Label5: TLabel
-    Left = 64
-    Top = 40
+    Left = 24
+    Top = 320
     Width = 32
     Height = 13
     Caption = 'Label5'
@@ -170,6 +170,7 @@ object Form1: TForm1
     Top = 56
   end
   object Timer3: TTimer
+    Interval = 3000
     OnTimer = Timer3Timer
     Left = 40
     Top = 200
