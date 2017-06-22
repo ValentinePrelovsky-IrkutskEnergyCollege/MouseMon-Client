@@ -66,9 +66,11 @@ begin
 end;
 procedure log(strin:string);
 begin
+try
   WriteLn(logFile,strin);
   Flush(logFile);
   Form1.Memo1.Lines.Add(strin);
+finally end;
 end;
 
 procedure TForm1.IdTCPClient1Connected(Sender: TObject);
@@ -90,11 +92,7 @@ begin
     Label1.Caption :=  'client local name: ' + locName;
     b := idTCPClient1.Connected;
 
-    try
-      //IdTCPClient1.CheckForDisconnect(false);
-      //IdTCPClient1.Socket.Binding.UpdateBindingPeer;
-      IdTCPClient1.SendCmd('alive');
-    except end;
+    try      IdTCPClient1.SendCmd('alive'); except end;
     b := idTCPClient1.Connected;
     Form1.Caption:=BoolToStr(b);
 
@@ -148,7 +146,7 @@ end;
 
 function getFileName():string;begin
 //Result:=('log ' + DateToStr(Now())+'-'+IntToStr(HourOf(Now))+'_'+IntToStr(MinuteOf(Now)) +'.txt');
-Result:='log';
+Result:='log.txt';
 end;
 procedure TForm1.FormCreate(Sender: TObject);
 begin
@@ -158,8 +156,10 @@ begin
   lc := 0;
   usb_counter := 0;
 
-  AssignFile(logFile, getFileName());
-  Rewrite(logFile);
+  try
+    AssignFile(logFile, getFileName());
+    Rewrite(logFile);
+  except end;
   try
     AssignFile(cnfFile,'config.txt');
     log('config file is exist');
@@ -195,7 +195,6 @@ begin
           IdTCPClient1.WriteLn('unused');
           IdTCPClient1.SendCmd('get_name');
           IdTCPClient1.WriteLn(locName);
-          //a2 := IdTCPClient1.ReadLn();
           IdTCPClient1.SendCmd('mouse_inject');
           log('Мышь +единена');
 
@@ -209,7 +208,6 @@ begin
           IdTCPClient1.WriteLn('unused');
           IdTCPClient1.SendCmd('get_name');
           IdTCPClient1.WriteLn(locName);
-          //a2 := IdTCPClient1.ReadLn();
           IdTCPClient1.SendCmd('mouse_eject');
           log('Мышь отсоединена');
 
@@ -233,7 +231,7 @@ end;
 
 procedure TForm1.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
-  CloseFile(logFile);
+  try CloseFile(logFile); except end;
 end;
 
 procedure TForm1.Timer3Timer(Sender: TObject);
